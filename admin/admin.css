@@ -1,0 +1,456 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #312e81;
+    transform: translateX(-5px);
+}
+
+.admin-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #9ca3af;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-icon {
+    font-size: 3rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+    border-radius: 15px;
+}
+
+.card-content h3 {
+    font-size: 1rem;
+    color: #9ca3af;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.table-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.table-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.refresh-btn,
+.clear-btn {
+    background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover,
+.clear-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.clear-btn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.visitor-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.visitor-table thead {
+    background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+}
+
+.visitor-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.visitor-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+}
+
+.visitor-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.visitor-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.visitor-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #9ca3af;
+    font-size: 1.2rem;
+    display: none;
+}
+
+.no-data.show {
+    display: block;
+}
+
+/* Photos Gallery */
+.photos-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.photos-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.photos-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.photo-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.photo-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.photo-card img:hover {
+    transform: scale(1.05);
+}
+
+.photo-info {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.photo-info strong {
+    color: #ffffff;
+}
+
+#noPhotosData {
+    text-align: center;
+    padding: 40px;
+    color: #9ca3af;
+    font-size: 1.2rem;
+    display: none;
+}
+
+#noPhotosData.show {
+    display: block;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .admin-container {
+        max-width: 100%;
+    }
+    
+    .admin-header {
+        margin-bottom: 20px;
+    }
+    
+    .back-btn {
+        position: relative;
+        left: auto;
+        top: auto;
+        margin-bottom: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .admin-header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .dashboard-card {
+        padding: 20px;
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+    }
+    
+    .card-content h3 {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+    
+    .card-value {
+        font-size: 1.5rem;
+    }
+    
+    .table-container {
+        padding: 15px;
+        margin-bottom: 20px;
+        overflow-x: auto;
+    }
+    
+    .table-container h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .table-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .refresh-btn,
+    .clear-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .visitor-table {
+        font-size: 0.75rem;
+        min-width: 600px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .visitor-table thead {
+        display: table-header-group;
+    }
+    
+    .visitor-table tbody {
+        display: table-row-group;
+    }
+    
+    .visitor-table th,
+    .visitor-table td {
+        padding: 10px 8px;
+        white-space: nowrap;
+    }
+    
+    .visitor-table th {
+        font-size: 0.8rem;
+    }
+    
+    .visitor-table td {
+        font-size: 0.75rem;
+    }
+    
+    .photos-container {
+        padding: 15px;
+        margin-top: 20px;
+    }
+    
+    .photos-container h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .photos-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .photo-card {
+        padding: 12px;
+    }
+    
+    .photo-info {
+        font-size: 0.8rem;
+    }
+    
+    .no-data {
+        padding: 30px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .dashboard-card {
+        padding: 15px;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .card-value {
+        font-size: 1.3rem;
+    }
+    
+    .table-container,
+    .photos-container {
+        padding: 12px;
+    }
+    
+    .table-container h2,
+    .photos-container h2 {
+        font-size: 1.1rem;
+    }
+    
+    .visitor-table {
+        font-size: 0.7rem;
+    }
+    
+    .visitor-table th,
+    .visitor-table td {
+        padding: 8px 5px;
+    }
+}

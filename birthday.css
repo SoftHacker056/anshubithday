@@ -1,0 +1,677 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   BIRTHDAY MODAL
+   ============================================ */
+.birthday-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: fadeIn 0.5s ease;
+}
+
+.birthday-modal.hidden {
+    display: none !important;
+}
+
+.birthday-modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.5s ease;
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.birthday-modal-content h2 {
+    font-size: 2rem;
+    color: #312e81;
+    margin-bottom: 10px;
+}
+
+.birthday-modal-content p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+#birthDateInput {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 3px solid #4f46e5;
+    border-radius: 50px;
+    outline: none;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+#birthDateInput:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.modal-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-note {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* Year Selection Buttons */
+.year-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.year-btn {
+    flex: 1;
+    min-width: 150px;
+    background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.year-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.year-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Waiting Message */
+.waiting-message {
+    font-size: 1.3rem;
+    color: #4f46e5;
+    font-weight: 600;
+    margin: 20px 0;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(79, 70, 229, 0.2);
+    border-top-color: #4f46e5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   BIRTHDAY PAGE
+   ============================================ */
+.birthday-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Confetti */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fbbf24;
+    animation: confettiFall 3s linear infinite;
+}
+
+.confetti-piece:nth-child(odd) {
+    background: #ec4899;
+    animation-duration: 4s;
+}
+
+.confetti-piece:nth-child(3n) {
+    background: #4f46e5;
+    animation-duration: 5s;
+}
+
+.confetti-piece:nth-child(4n) {
+    background: #10b981;
+    animation-duration: 3.5s;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Balloons */
+.balloons-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 3rem;
+    animation: floatBalloon 6s ease-in-out infinite;
+}
+
+.balloon:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.balloon:nth-child(2) {
+    left: 30%;
+    animation-delay: 1s;
+}
+
+.balloon:nth-child(3) {
+    left: 50%;
+    animation-delay: 2s;
+}
+
+.balloon:nth-child(4) {
+    left: 70%;
+    animation-delay: 1.5s;
+}
+
+.balloon:nth-child(5) {
+    left: 90%;
+    animation-delay: 0.5s;
+}
+
+@keyframes floatBalloon {
+    0%, 100% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Content */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    max-width: 800px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.birthday-title {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease;
+}
+
+.birthday-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Countdown */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease 0.4s both;
+    padding: 0 10px;
+}
+
+@media (max-width: 480px) {
+    .countdown-container {
+        gap: 8px;
+    }
+}
+
+.countdown-item {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 30px 25px;
+    border-radius: 20px;
+    min-width: 120px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.countdown-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.countdown-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.countdown-separator {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.birthday-message {
+    margin-top: 30px;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+
+.birthday-message p {
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#targetDateText {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+/* Music Section */
+.music-section {
+    margin-top: 30px;
+    animation: fadeInUp 1s ease 0.8s both;
+}
+
+.music-section p {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.music-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Footer */
+.birthday-footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    z-index: 10;
+    animation: fadeInUp 1s ease 1s both;
+}
+
+.birthday-footer p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.footer-click {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.footer-click:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .birthday-title {
+        font-size: 2rem;
+    }
+    
+    .birthday-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .countdown-container {
+        gap: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .countdown-item {
+        min-width: 70px;
+        padding: 15px 10px;
+    }
+    
+    .countdown-value {
+        font-size: 1.8rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+    
+    .countdown-separator {
+        font-size: 1.2rem;
+    }
+    
+    .content-wrapper {
+        padding: 25px 20px;
+        margin: 10px;
+    }
+    
+    .birthday-message p {
+        font-size: 1.1rem;
+    }
+    
+    #targetDateText {
+        font-size: 1rem;
+    }
+    
+    .music-section p {
+        font-size: 1rem;
+    }
+    
+    .music-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .birthday-footer {
+        bottom: 10px;
+        padding: 0 20px;
+    }
+    
+    .birthday-footer p {
+        font-size: 0.8rem;
+    }
+    
+    .footer-click {
+        font-size: 0.75rem;
+    }
+    
+    .balloon {
+        font-size: 2rem;
+    }
+    
+    .birthday-modal-content {
+        padding: 40px 30px;
+    }
+    
+    .modal-icon {
+        font-size: 3rem;
+    }
+    
+    .birthday-modal-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .birthday-modal-content p {
+        font-size: 1rem;
+    }
+    
+    .year-buttons {
+        flex-direction: column;
+    }
+    
+    .year-btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .waiting-message {
+        font-size: 1.1rem;
+    }
+    
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .birthday-title {
+        font-size: 1.5rem;
+    }
+    
+    .birthday-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .countdown-container {
+        gap: 5px;
+    }
+    
+    .countdown-item {
+        min-width: 60px;
+        padding: 12px 8px;
+    }
+    
+    .countdown-value {
+        font-size: 1.5rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.75rem;
+    }
+    
+    .countdown-separator {
+        font-size: 1rem;
+    }
+    
+    .content-wrapper {
+        padding: 20px 15px;
+        border-radius: 20px;
+    }
+    
+    .birthday-message p {
+        font-size: 1rem;
+    }
+    
+    #targetDateText {
+        font-size: 0.9rem;
+    }
+    
+    .music-section {
+        margin-top: 20px;
+    }
+    
+    .music-section p {
+        font-size: 0.9rem;
+    }
+    
+    .music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .balloon {
+        font-size: 1.5rem;
+    }
+    
+    .birthday-modal-content {
+        padding: 30px 20px;
+    }
+    
+    .modal-icon {
+        font-size: 2.5rem;
+    }
+    
+    .birthday-modal-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    #birthDateInput {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+    
+    .modal-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}

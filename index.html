@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Advocate 2025 ⚖️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Entry Modal -->
+    <div class="entry-modal" id="entryModal">
+        <div class="entry-content">
+            <div class="entry-icon">👋</div>
+            <h2>Welcome!</h2>
+            <p>Enter your name to continue</p>
+            <input 
+                type="text" 
+                id="userNameInput" 
+                placeholder="Enter your name" 
+                autocomplete="off"
+                onkeypress="if(event.key === 'Enter') checkUserAccess()"
+            >
+            <button class="entry-btn" onclick="checkUserAccess()">Continue</button>
+            <p class="entry-note">Website crafted with friendship by Piyush 💙</p>
+        </div>
+    </div>
+    
+    <!-- Main Website Content (hidden initially) -->
+    <div id="mainWebsite" style="display: none;">
+    <!-- Christmas Snow Effect -->
+    <div class="snow-container"></div>
+    <!-- Floating Emojis Animation -->
+    <div class="floating-emojis">
+        <span class="float-emoji">⚖️</span>
+        <span class="float-emoji">📚</span>
+        <span class="float-emoji">🎓</span>
+        <span class="float-emoji">⚖️</span>
+        <span class="float-emoji">📜</span>
+    </div>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="gavel-icon">⚖️</div>
+            <h1 class="hero-title">Future Advocate 2025 ⚖️</h1>
+            <p class="hero-subtitle">Still arguing since school days 😄</p>
+            <button class="cta-button" onclick="scrollToSection('about')">Her Journey Begins</button>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Her</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Remember those school days when we used to debate everything? Well, she's taking it to the next level! 🎓</p>
+                    <p>Starting her first year of Law, she's already diving deep into the world of justice, rights, and legal battles. From arguing about lunch breaks to preparing for real courtroom arguments - the journey has just begun!</p>
+                    <p class="funny-line">Still arguing since school days 😄</p>
+                    <p class="funny-line">But now with legal backing! 📜</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/friend-photo.jpg" alt="Future Advocate" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%23e0e7ff%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2248%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%234f46e5%22%3E⚖️%3C/text%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dream Wall Section -->
+    <section class="dream-wall" id="dreams">
+        <div class="container">
+            <h2 class="section-title">Dream Wall</h2>
+            <div class="dream-cards">
+                <div class="dream-card">
+                    <div class="dream-icon">⚖️</div>
+                    <h3>Advocate Dream</h3>
+                    <p>Fighting for justice, one case at a time. The black coat is waiting!</p>
+                </div>
+                <div class="dream-card">
+                    <div class="dream-icon">📚</div>
+                    <h3>Late Night Law Books</h3>
+                    <p>Burning midnight oil, mastering the art of law and justice.</p>
+                </div>
+                <div class="dream-card">
+                    <div class="dream-icon">🎤</div>
+                    <h3>Powerful Arguments</h3>
+                    <p>From school debates to courtroom speeches - the voice of justice!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Law + Fun Section -->
+    <section class="law-fun" id="fun">
+        <div class="container">
+            <h2 class="section-title">Law + Fun 😆</h2>
+            <div class="jokes-container">
+                <div class="joke-card" onclick="addEmojiReaction(this)">
+                    <p>"She doesn't argue, she presents evidence!"</p>
+                    <div class="emoji-reactions"></div>
+                </div>
+                <div class="joke-card" onclick="addEmojiReaction(this)">
+                    <p>"Cross-examination started in school itself"</p>
+                    <div class="emoji-reactions"></div>
+                </div>
+                <div class="joke-card" onclick="addEmojiReaction(this)">
+                    <p>"Objection! That's not how we do lunch breaks!"</p>
+                    <div class="emoji-reactions"></div>
+                </div>
+                <div class="joke-card" onclick="addEmojiReaction(this)">
+                    <p>"Her closing arguments are legendary... even for choosing movies!"</p>
+                    <div class="emoji-reactions"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section class="music-section" id="music">
+        <div class="container">
+            <h2 class="section-title">Background Music 🎵</h2>
+            <div class="music-player">
+                <div class="music-info">
+                    <p>Motivational Vibes</p>
+                    <p class="music-subtitle">Play some inspiring tunes while you explore!</p>
+                </div>
+                <div class="music-controls">
+                    <button class="music-btn" id="playPauseBtn" onclick="toggleMusic()">
+                        <span id="playIcon">▶️</span>
+                        <span id="pauseIcon" style="display: none;">⏸️</span>
+                    </button>
+                    <audio id="backgroundMusic" loop>
+                        <source src="music/motivational.mp3" type="audio/mpeg">
+                        <source src="music/motivational.ogg" type="audio/ogg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <h2 class="section-title">Fun Games 🎮</h2>
+            <p class="games-subtitle">Challenge yourself with these law-themed games!</p>
+            <div class="games-grid">
+                <div class="game-card" onclick="openGame('game1-memory')">
+                    <div class="game-icon">🧠</div>
+                    <h3>Memory Match</h3>
+                    <p>Match law icons in this memory game!</p>
+                </div>
+                <div class="game-card" onclick="openGame('game2-quiz')">
+                    <div class="game-icon">❓</div>
+                    <h3>Law Quiz</h3>
+                    <p>Test your knowledge with fun questions!</p>
+                </div>
+                <div class="game-card" onclick="openGame('game3-click-speed')">
+                    <div class="game-icon">⚡</div>
+                    <h3>Click Speed</h3>
+                    <p>How fast can you click? Challenge yourself!</p>
+                </div>
+                <div class="game-card" onclick="openGame('game4-typing')">
+                    <div class="game-icon">⌨️</div>
+                    <h3>Typing Challenge</h3>
+                    <p>Type law sentences as fast as you can!</p>
+                </div>
+                <div class="game-card" onclick="openGame('game5-gavel-hit')">
+                    <div class="game-icon">🔨</div>
+                    <h3>Gavel Hit</h3>
+                    <p>Hit the gavel when it appears!</p>
+                </div>
+                <div class="game-card" onclick="openGame('game6-birthday-filter')">
+                    <div class="game-icon">🎂</div>
+                    <h3>Birthday Camera Filter</h3>
+                    <p>Snap a birthday photo with advocate style!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Popup Section -->
+    <section class="memory-section" id="memories">
+        <div class="container">
+            <h2 class="section-title">Special Memories</h2>
+            <button class="memory-btn" onclick="openMemoryModal()">School Memories</button>
+        </div>
+    </section>
+
+    <!-- Memory Modal -->
+    <div class="modal" id="memoryModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMemoryModal()">&times;</span>
+            <h2>School Memories 💭</h2>
+            <div class="memory-content">
+                <p>Remember when we used to sit together in class, planning our futures?</p>
+                <p>You always had this fire in your eyes when talking about justice and making a difference.</p>
+                <p>From those innocent school days to now - you're actually doing it! Starting law school, chasing your dream of becoming an Advocate.</p>
+                <p class="memory-message">I'm so proud of you, and I know you're going to be an amazing lawyer! The courtroom better be ready for you! ⚖️</p>
+                <p class="signature">- Your School Best Friend ❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Motivation Section -->
+    <section class="motivation" id="motivation">
+        <div class="container">
+            <h2 class="section-title">Motivation Zone</h2>
+            <div class="motivation-quotes">
+                <p class="typing-text" id="typingText"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">Built with madness, memories & friendship 💙</p>
+            <p class="footer-signature" id="adminLink" onclick="checkAdminAccess()">Website made by Piyush</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

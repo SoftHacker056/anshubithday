@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gavel Hit Game</title>
+    <link rel="stylesheet" href="game5-gavel-hit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <button class="back-btn" onclick="window.location.href='../index.html'">← Back</button>
+            <h1>🔨 Gavel Hit Game</h1>
+        </div>
+        
+        <div class="game-area">
+            <div class="score-board">
+                <div class="score-item">
+                    <span>Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span>Missed:</span>
+                    <span id="missed">0</span>
+                </div>
+                <div class="score-item">
+                    <span>Time:</span>
+                    <span id="timer">30</span>s
+                </div>
+            </div>
+            
+            <div class="play-area" id="playArea">
+                <p class="instruction">Click the gavel when it appears!</p>
+                <div class="gavel" id="gavel" onclick="hitGavel()">🔨</div>
+            </div>
+            
+            <button class="start-btn" id="startBtn" onclick="startGame()">Start Game</button>
+        </div>
+        
+        <div class="result-modal" id="resultModal">
+            <div class="result-content">
+                <h2>🎉 Game Over!</h2>
+                <div class="result-stats">
+                    <p>Final Score: <span id="finalScore">0</span></p>
+                    <p>Missed: <span id="finalMissed">0</span></p>
+                    <p>Accuracy: <span id="accuracy">0</span>%</p>
+                </div>
+                <p id="resultMessage"></p>
+                <button onclick="resetGame()">Play Again</button>
+                <button onclick="window.location.href='../index.html'">Back to Home</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game5-gavel-hit.js"></script>
+</body>
+</html>

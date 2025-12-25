@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Speed Challenge</title>
+    <link rel="stylesheet" href="game3-click-speed.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <button class="back-btn" onclick="window.location.href='../index.html'">← Back</button>
+            <h1>⚡ Click Speed Challenge</h1>
+        </div>
+        
+        <div class="game-area">
+            <div class="timer-display">
+                <div class="timer-circle">
+                    <span id="timer">10</span>
+                </div>
+            </div>
+            
+            <div class="click-area" id="clickArea">
+                <h2>Click as fast as you can!</h2>
+                <p id="instructions">Click the button below to start</p>
+                <button class="click-btn" id="clickBtn" onclick="handleClick()">CLICK ME!</button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Clicks:</span>
+                    <span class="stat-value" id="clicks">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">CPS:</span>
+                    <span class="stat-value" id="cps">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-modal" id="resultModal">
+            <div class="result-content">
+                <h2>🎉 Time's Up!</h2>
+                <div class="result-stats">
+                    <p>Total Clicks: <span id="finalClicks">0</span></p>
+                    <p>Average CPS: <span id="finalCPS">0</span></p>
+                </div>
+                <p id="resultMessage"></p>
+                <button onclick="resetGame()">Play Again</button>
+                <button onclick="window.location.href='../index.html'">Back to Home</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game3-click-speed.js"></script>
+</body>
+</html>

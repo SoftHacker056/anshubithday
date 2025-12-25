@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 700px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #ec4899;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #be185d;
+    transform: translateX(-5px);
+}
+
+.game-header h1 {
+    color: #be185d;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.score-item {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 15px 30px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.score-item span:last-child {
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.quiz-container {
+    margin-bottom: 30px;
+}
+
+.question-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.question-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.option:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(10px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.option.correct {
+    background: #10b981;
+    border-color: #059669;
+}
+
+.option.wrong {
+    background: #ef4444;
+    border-color: #dc2626;
+}
+
+.option.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.result-modal,
+.final-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.result-modal.show,
+.final-modal.show {
+    display: flex;
+}
+
+.result-content,
+.final-content {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-content h2,
+.final-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.result-content p,
+.final-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.final-score {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #4f46e5;
+    margin: 20px 0;
+}
+
+.result-content button,
+.final-content button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: all 0.3s ease;
+}
+
+.result-content button:hover,
+.final-content button:hover {
+    background: #312e81;
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .game-header h1 {
+        font-size: 2rem;
+    }
+    
+    .score-board {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .question-card {
+        padding: 25px;
+    }
+    
+    .question-card h2 {
+        font-size: 1.2rem;
+    }
+}

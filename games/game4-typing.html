@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Challenge</title>
+    <link rel="stylesheet" href="game4-typing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <button class="back-btn" onclick="window.location.href='../index.html'">← Back</button>
+            <h1>⌨️ Typing Challenge</h1>
+        </div>
+        
+        <div class="game-area">
+            <div class="stats-bar">
+                <div class="stat">
+                    <span>Time:</span>
+                    <span id="timer">60</span>s
+                </div>
+                <div class="stat">
+                    <span>WPM:</span>
+                    <span id="wpm">0</span>
+                </div>
+                <div class="stat">
+                    <span>Accuracy:</span>
+                    <span id="accuracy">100</span>%
+                </div>
+            </div>
+            
+            <div class="text-display" id="textDisplay">
+                <!-- Text will be displayed here -->
+            </div>
+            
+            <div class="input-area">
+                <textarea 
+                    id="typingInput" 
+                    placeholder="Start typing here..."
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                ></textarea>
+            </div>
+            
+            <button class="start-btn" id="startBtn" onclick="startGame()">Start Typing</button>
+        </div>
+        
+        <div class="result-modal" id="resultModal">
+            <div class="result-content">
+                <h2>🎉 Challenge Complete!</h2>
+                <div class="result-stats">
+                    <p>Words Per Minute: <span id="finalWPM">0</span></p>
+                    <p>Accuracy: <span id="finalAccuracy">0</span>%</p>
+                    <p>Total Words: <span id="finalWords">0</span></p>
+                </div>
+                <p id="resultMessage"></p>
+                <button onclick="resetGame()">Try Again</button>
+                <button onclick="window.location.href='../index.html'">Back to Home</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game4-typing.js"></script>
+</body>
+</html>

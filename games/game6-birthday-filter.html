@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Camera Filter 🎂</title>
+    <link rel="stylesheet" href="game6-birthday-filter.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <button class="back-btn" onclick="window.location.href='../index.html'">← Back</button>
+            <h1>🎂 Birthday Camera Filter</h1>
+            <p class="subtitle">Snap a birthday photo with advocate style! ⚖️</p>
+        </div>
+        
+        <!-- Permission Request Screen -->
+        <div class="permission-screen" id="permissionScreen">
+            <div class="permission-content">
+                <div class="permission-icon">📸</div>
+                <h2>Camera & Location Access</h2>
+                <p>We need your permission to:</p>
+                <ul>
+                    <li>📷 Access your camera for photos</li>
+                    <li>📍 Get your location (optional)</li>
+                </ul>
+                <p class="note">This is for the birthday filter experience!</p>
+                <button class="permission-btn" onclick="requestPermissions()">Allow Access</button>
+                <p class="privacy-note">Educational / Demo Purpose Only</p>
+            </div>
+        </div>
+        
+        <!-- Camera View -->
+        <div class="camera-view" id="cameraView" style="display: none;">
+            <div class="video-container">
+                <video id="videoStream" autoplay playsinline></video>
+                <canvas id="captureCanvas" style="display: none;"></canvas>
+                
+                <!-- Overlay Elements -->
+                <div class="overlay-container">
+                    <div class="birthday-text">🎂 Happy Birthday Future Advocate 🎉</div>
+                    <div class="gavel-icon-overlay">⚖️</div>
+                    <div class="balloons">
+                        <span class="balloon">🎈</span>
+                        <span class="balloon">🎈</span>
+                        <span class="balloon">🎈</span>
+                    </div>
+                    <div class="confetti" id="confetti"></div>
+                </div>
+            </div>
+            
+            <div class="camera-controls">
+                <button class="capture-btn" id="captureBtn" onclick="capturePhoto()">
+                    <span class="capture-icon">📷</span>
+                </button>
+                <button class="switch-camera-btn" id="switchCameraBtn" onclick="switchCamera()" style="display: none;">
+                    🔄
+                </button>
+            </div>
+        </div>
+        
+        <!-- Preview Screen -->
+        <div class="preview-screen" id="previewScreen" style="display: none;">
+            <div class="preview-container">
+                <img id="previewImage" alt="Captured Photo">
+                <div class="preview-controls">
+                    <button class="retake-btn" onclick="retakePhoto()">↻ Retake</button>
+                    <button class="download-btn" onclick="downloadPhoto()">⬇ Download</button>
+                    <button class="save-btn" onclick="savePhoto()">💾 Save to Server</button>
+                </div>
+                <p class="saving-status" id="savingStatus"></p>
+            </div>
+        </div>
+        
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage" style="display: none;">
+            <p id="errorText"></p>
+            <button onclick="location.reload()">Try Again</button>
+        </div>
+    </div>
+    
+    <div class="footer-note">
+        <p>Website made by Piyush 💙</p>
+    </div>
+    
+    <script src="game6-birthday-filter.js"></script>
+</body>
+</html>

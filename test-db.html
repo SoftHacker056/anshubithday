@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Database Test ⚡</title>
+    <link rel="stylesheet" href="test-db.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Neon Database Connected ✅</h1>
+            <p class="subtitle">Test your PostgreSQL connection and view data</p>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-primary" id="testDbBtn" onclick="testDatabase()">
+                <span class="btn-icon">🔌</span>
+                <span class="btn-text">Test Database</span>
+            </button>
+            <button class="btn btn-secondary" id="loadUsersBtn" onclick="loadUsers()">
+                <span class="btn-icon">👥</span>
+                <span class="btn-text">Load Users</span>
+            </button>
+            <button class="btn btn-success" id="saveDemoBtn" onclick="saveDemoUser()">
+                <span class="btn-icon">➕</span>
+                <span class="btn-text">Save Demo User</span>
+            </button>
+        </div>
+        
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+        
+        <!-- Database Status -->
+        <div class="status-card" id="statusCard" style="display: none;">
+            <h3>Database Status</h3>
+            <div class="status-content" id="statusContent"></div>
+        </div>
+        
+        <!-- Users Table -->
+        <div class="table-container" id="tableContainer" style="display: none;">
+            <h2>Users Data</h2>
+            <div class="table-wrapper">
+                <table class="users-table" id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Device</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Visit Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+            <p class="no-data" id="noData" style="display: none;">No users found. Click "Save Demo User" to add data!</p>
+        </div>
+        
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage" style="display: none;">
+            <p id="errorText"></p>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Neon Database ⚡ | Built by Piyush 💙</p>
+        </footer>
+    </div>
+    
+    <script src="test-db.js"></script>
+</body>
+</html>
